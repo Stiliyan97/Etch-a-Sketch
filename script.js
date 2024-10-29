@@ -13,7 +13,34 @@ function createTheRows(numberOfRows) {
     }
 }
 
+// The function creates the squares for the grid
+
+function createTheSquares (numberOfSquares) {
+    let containerDiv = document.getElementById("container");
+    let containerDivHeight = containerDiv.offsetHeight;
+    
+    let rows = document.querySelectorAll(".row");
+
+    console.log(rows);
+
+    let squareSize = containerDivHeight / numberOfSquares;
+
+    for (let i = 0; i < numberOfSquares; i++) {
+        let currentRow = rows[i];
+        for (let j = 0; j < numberOfSquares; j++) {
+            let squareDiv = document.createElement("div");
+            squareDiv.classList.add("square");
+            squareDiv.style.height = `${squareSize}px`;
+            squareDiv.style.width = `${squareSize}px`;
+            currentRow.appendChild(squareDiv);
+        }
+        
+    }
+}
+
 createTheRows(16);
+
+createTheSquares(16);
 
 function createTheGrid (gridSize) {
        
