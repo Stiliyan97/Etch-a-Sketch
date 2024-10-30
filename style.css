@@ -4,6 +4,33 @@
     box-sizing: border-box;
 }
 
+#grid-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+#grid-creation{
+    display: flex;
+    gap:20px
+}
+
+#grid-creation button {
+    background-color: aqua;
+    width: 150px;
+    height: 30px;
+    border: 3px solid goldenrod;
+    border-radius: 12px;
+}
+
+#grid-creation input {
+    width: 100px;
+}
+
+#change-grid-btn:hover{
+    opacity: 0.60;
+}
 #container {
     margin-top: 50px;
     margin-left: 50px;
@@ -20,4 +47,8 @@
 
 .square {
     border: 1px solid black;
+}
+
+.square:hover {
+    opacity: 0.1;
 }
