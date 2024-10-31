@@ -1,3 +1,17 @@
+function getRandomNumber() {
+    let randomNumber = Math.floor(Math.random()*255) + 1 ;
+
+    console.log(randomNumber);
+    return randomNumber;
+}
+
+
+function changeColor (e) {
+    let currentSquare = e.target;
+
+    currentSquare.style.backgroundColor = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+}
+
 // The function creates the rows for the grid
 
 function createTheRows(numberOfRows) {
@@ -21,8 +35,6 @@ function createTheSquares (numberOfSquares) {
     
     let rows = document.querySelectorAll(".row");
 
-    console.log(rows);
-
     let squareSize = containerDivHeight / numberOfSquares;
 
     for (let i = 0; i < numberOfSquares; i++) {
@@ -33,8 +45,21 @@ function createTheSquares (numberOfSquares) {
             squareDiv.style.height = `${squareSize}px`;
             squareDiv.style.width = `${squareSize}px`;
             currentRow.appendChild(squareDiv);
+            squareDiv.addEventListener("dragenter", changeColor);
         }
         
+    }
+}
+
+// The function clears the grid
+
+function clearTheGrid() {
+    let containerDiv = document.getElementById("container");
+    
+    let gridRows = Array.from(containerDiv.children);
+
+    for (let i = 0; i < gridRows.length; i++) {
+        containerDiv.removeChild(gridRows[i]);
     }
 }
 
@@ -42,6 +67,32 @@ createTheRows(16);
 
 createTheSquares(16);
 
-function createTheGrid (gridSize) {
+
+let changeGridBtn = document.getElementById("change-grid-btn");
+
+changeGridBtn.addEventListener("click", createTheGrid)
+
+function createTheGrid (e) {
+
+    let inputValue = e.target.previousElementSibling.value;
+    console.log(inputValue);
+
+    if(isNaN(parseInt(inputValue))) {
+        return;
+    }
+
+    let gridSize = parseInt(inputValue);
+
+    if (gridSize < 0 || gridSize > 100) {
+        return;
+    }
+
+    clearTheGrid();
+
+    createTheRows(gridSize);
+
+    createTheSquares(gridSize);
+
+       
        
 }
