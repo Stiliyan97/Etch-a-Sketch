@@ -46,6 +46,7 @@ function createTheSquares (numberOfSquares) {
             squareDiv.style.width = `${squareSize}px`;
             currentRow.appendChild(squareDiv);
             squareDiv.addEventListener("dragenter", changeColor);
+            squareDiv.addEventListener("click", changeColor);
         }
         
     }
